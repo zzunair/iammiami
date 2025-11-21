@@ -1,0 +1,305 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_Y3rfa7": {
+      "type": "image-banner",
+      "blocks": {
+        "large_img_wyYxB7": {
+          "type": "largeImg",
+          "settings": {
+            "image": "shopify://shop_images/about-us-header.jpg",
+            "enable_max_width_image": false,
+            "custom_width_image": 1170,
+            "enable_scroll_down": false,
+            "image_behavior": "none",
+            "sub_title": "",
+            "border_sub_title": false,
+            "font_size_sub_title": 14,
+            "font_size_sub_title_mb": 14,
+            "margin_bottom_sub_title": 14,
+            "sub_heading_font": "font_1",
+            "font_weight_sub_title": "700",
+            "sub_title_position": "sub_title_above",
+            "color_sub_title": "#232323",
+            "color_sub_title_mb": "#ffffff",
+            "heading": "",
+            "letter_spacing_heading": "",
+            "enable_style_italic": false,
+            "font_size_heading": 40,
+            "font_size_heading_mb": 24,
+            "margin_bottom_heading": 20,
+            "font_weight_heading": "600",
+            "color_heading": "#232323",
+            "color_heading_mb": "#ffffff",
+            "border_title": "border_s1",
+            "border_color_title": "#232323",
+            "border_color_title_mobile": "#ffffff",
+            "text": "",
+            "font_size_des": 12,
+            "font_size_des_mb": 12,
+            "line_height_des": 26,
+            "margin_bottom_des": 35,
+            "color_des": "#232323",
+            "color_des_mb": "#ffffff",
+            "countdown": "",
+            "hide_countdown_fc": "countdown",
+            "countdown_style": "round",
+            "countdown_position": "countdown_below_desc",
+            "font_size_countdown_number": 30,
+            "font_size_countdown_text": 14,
+            "color_countdown": "#232323",
+            "color_countdown_mb": "#ffffff",
+            "countdown_margin_bottom": 35,
+            "content_width": 475,
+            "align": "center",
+            "align_items": "center",
+            "position": "left",
+            "custom_horizontal": "",
+            "custom_vertical": "",
+            "btn_text": "",
+            "link": "",
+            "btn_icon": "",
+            "button_1_width": 235,
+            "enable_button_custom_border": false,
+            "button_color": "#ffffff",
+            "button_border": "#232323",
+            "button_background": "#232323",
+            "button_background_gradient": "",
+            "button_color_hover": "#ffffff",
+            "button_border_hover": "#232323",
+            "button_background_hover": "#232323",
+            "button_background_gradient_hover": "",
+            "btn_text_2": "",
+            "link_2": "",
+            "btn_icon_2": "",
+            "button_color_2": "#ffffff",
+            "button_border_2": "#232323",
+            "button_background_2": "#232323",
+            "button_background_2_gradient": "",
+            "button_color_hover_2": "#ffffff",
+            "button_border_hover_2": "#232323",
+            "button_background_hover_2": "#232323",
+            "button_background_gradient_hover_2": "",
+            "video_link": "",
+            "adaptive_height_video": "56",
+            "icon_style": "style_1",
+            "color_icon": "#ffffff",
+            "bg_color_icon": "#000000",
+            "enable_custom_video_icon_position": false,
+            "video_icon_horizontal_position": "",
+            "video_icon_vertical_position": "",
+            "video_icon_horizontal_position_mb": "",
+            "video_icon_vertical_position_mb": ""
+          }
+        }
+      },
+      "block_order": [
+        "large_img_wyYxB7"
+      ],
+      "disabled": true,
+      "settings": {
+        "container": "fullwidth",
+        "padding_full_width": 0,
+        "mg_top_desktop": 0,
+        "mg_top_tablet": 0,
+        "mg_top_mobile": 0,
+        "mg_bottom_desktop": 0,
+        "mg_bottom_tablet": 0,
+        "mg_bottom_mobile": 0,
+        "image_banner_title": "",
+        "enable_border_title": false,
+        "color_title": "#202020",
+        "fontsize_title": 24,
+        "fontsize_title_mb": 20,
+        "margin_bottom_title": 25,
+        "image_banner_des": "",
+        "color_des": "#202020",
+        "fontsize_des": 16,
+        "title_align": "center",
+        "style_bg": "none",
+        "bg_color": "",
+        "bg_color_gradient": "",
+        "display_type": "slide",
+        "list_gap": 0,
+        "enable_arrows": false,
+        "arrows_position": "",
+        "enable_dots": false,
+        "enable_autoplay": false
+      }
+    },
+    "rich_text_MLPaBe": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_YefD3n": {
+          "type": "heading",
+          "settings": {
+            "heading": "Who am I",
+            "heading_size": 45,
+            "heading_size_mb": 30,
+            "heading_line_height": 1,
+            "heading_color": "#1c1d1b"
+          }
+        }
+      },
+      "block_order": [
+        "heading_YefD3n"
+      ],
+      "custom_css": [
+        "h2 {text-transform: uppercase;}"
+      ],
+      "settings": {
+        "container": "container",
+        "padding_full_width": 0,
+        "enable_border_top": false,
+        "enable_border_bottom": false,
+        "color_border_bottom": "#e8e8e8",
+        "mg_top_desktop": 50,
+        "mg_top_tablet": 50,
+        "mg_top_mobile": 30,
+        "mg_bottom_desktop": 50,
+        "mg_bottom_tablet": 50,
+        "mg_bottom_mobile": 30,
+        "rich_text_bg": "#df5b1b",
+        "rich_text_bg_gradient": "",
+        "enable_column": false
+      }
+    },
+    "rich_text_g7bqKf": {
+      "type": "rich-text",
+      "blocks": {
+        "text_Xe4b3w": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>I am Miami</h2>\n<p>Commuting from Miami to NYC every week for more than fifteen years was the starting point for the I AM MIAMI brand. When I landed at any of the NYC airports and repeatedly saw the I LOVE NY icon around the airport shops, the obvious question was raised: Why we don’t have a city icon like this in Miami?\n\n\n</p><p>And then the hard work started: creative teams looking for an idea that would become the I LOVE NY for Miami. The icon of the Magic City. After some initial proposals, the I AM MIAMI idea came and we all agreed that it was a big idea. Nobody has realized that the center letters of Miami say I AM! How is that possible? It's obvious when you see it and then it remains forever stuck in your mind. We explored different fonts, different colors, different shapes, and different ways to bring the big idea to life until we ‘got it. Yes, we got it!\n\n</p><p>And the fun began: the products, the designers, the manufacturing… and now the first I AM MIAMI collection is ready. For all of us who love this city.\n\n</p><p>The I AM MIAMI brand stands for the celebration of life in Miami: the city light, the nightlife, the art, the business life, the diversity, the food, the shopping, the culture, and the joyful and uplifting spirit… each one of us has our reasons to enjoy the life of the city and all of us are encapsulated in the I AM MIAMI brand. A brand that is a badge of Miami pride.\n\n</p><p>Let’s celebrate because life is too short not to be in Miami!</p>",
+            "text_size": 16,
+            "text_line_height": 1,
+            "margin_top_text": 20,
+            "text_color": "#3d4243",
+            "text_width": "650px"
+          }
+        }
+      },
+      "block_order": [
+        "text_Xe4b3w"
+      ],
+      "custom_css": [
+        "h2 {line-height: 1; font-size: 28px; font-weight: 900 !important;}",
+        ".rich-text__text {text-align: left;}",
+        "p {font-size: 25px; margin-bottom: 1em; line-height: 1.4; font-weight: 400;}",
+        "@media only screen and (max-width: 1024px) {h2 {font-size: 20px; } p {font-size: 16px; }}"
+      ],
+      "settings": {
+        "container": "container",
+        "padding_full_width": 0,
+        "enable_border_top": false,
+        "enable_border_bottom": false,
+        "color_border_bottom": "#e8e8e8",
+        "mg_top_desktop": 50,
+        "mg_top_tablet": 50,
+        "mg_top_mobile": 50,
+        "mg_bottom_desktop": 50,
+        "mg_bottom_tablet": 50,
+        "mg_bottom_mobile": 50,
+        "rich_text_bg": "#e6bf22",
+        "rich_text_bg_gradient": "",
+        "enable_column": false
+      }
+    },
+    "rich_text_pfajUG": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_AgcKFh": {
+          "type": "heading",
+          "settings": {
+            "heading": "I AM PURPOSE",
+            "heading_size": 45,
+            "heading_size_mb": 30,
+            "heading_line_height": 1,
+            "heading_color": "#1c1d1b"
+          }
+        }
+      },
+      "block_order": [
+        "heading_AgcKFh"
+      ],
+      "settings": {
+        "container": "container",
+        "padding_full_width": 0,
+        "enable_border_top": false,
+        "enable_border_bottom": false,
+        "color_border_bottom": "#e8e8e8",
+        "mg_top_desktop": 50,
+        "mg_top_tablet": 50,
+        "mg_top_mobile": 30,
+        "mg_bottom_desktop": 50,
+        "mg_bottom_tablet": 50,
+        "mg_bottom_mobile": 30,
+        "rich_text_bg": "#3493cb",
+        "rich_text_bg_gradient": "",
+        "enable_column": false
+      }
+    },
+    "rich_text_YCB4dH": {
+      "type": "rich-text",
+      "blocks": {
+        "text_zmXG7T": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Because we love Miami we want to take care of our city. \n\n</p><p>The purpose of this brand is to have an active role in helping Miami to be a sustainable city. Part of the company’s profit will be allocated to keep Miami County green supporting and creating initiatives to preserve our natural beauty.\n\n</p><p>So, every time you buy an I AM MIAMI product, you are contributing to making Miami County more sustainable.</p>",
+            "text_size": 16,
+            "text_line_height": 1,
+            "margin_top_text": 20,
+            "text_color": "#3d4243",
+            "text_width": "650px"
+          }
+        }
+      },
+      "block_order": [
+        "text_zmXG7T"
+      ],
+      "custom_css": [
+        "h2 {line-height: 1; font-size: 28px; font-weight: 900 !important;}",
+        ".rich-text__text {text-align: left;}",
+        "p {font-size: 25px; margin-bottom: 1em; line-height: 1.4; font-weight: 400;}",
+        "@media only screen and (max-width: 1024px) {h2 {font-size: 20px; } p {font-size: 16px; }}"
+      ],
+      "settings": {
+        "container": "container",
+        "padding_full_width": 0,
+        "enable_border_top": false,
+        "enable_border_bottom": false,
+        "color_border_bottom": "#e8e8e8",
+        "mg_top_desktop": 50,
+        "mg_top_tablet": 50,
+        "mg_top_mobile": 50,
+        "mg_bottom_desktop": 50,
+        "mg_bottom_tablet": 50,
+        "mg_bottom_mobile": 50,
+        "rich_text_bg": "#ee9eb9",
+        "rich_text_bg_gradient": "",
+        "enable_column": false
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    }
+  },
+  "order": [
+    "image_banner_Y3rfa7",
+    "rich_text_MLPaBe",
+    "rich_text_g7bqKf",
+    "rich_text_pfajUG",
+    "rich_text_YCB4dH",
+    "main"
+  ]
+}

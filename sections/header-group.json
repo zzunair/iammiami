@@ -1,0 +1,432 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header Group",
+  "sections": {
+    "custom_liquid_BtB9bV": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>\n\n/* FOR THE HEADER !!! */\n.previewCartGroup {\n  text-align:right;\n }\n .previewCartInfo .button-checkout\n {\ncolor: #fff;\n  border-radius: .75em !important;\n  font-size: clamp(1.5rem, 1.625vw, 2rem) !important;\n  line-height: .8 !important;\n  margin: 0 auto !important;\n  pointer-events: all;\n  font-weight: 900;\n  padding-top: 13px !important;\n  padding-bottom: 13px !important;\n  background: var(--iamcolor) !important;\nbackground: var(--iamcolor);\n  border: 1px solid var(--iamcolor);\n  transition: .25s !important;\n  box-shadow:none;\n  text-transform: uppercase;\n  min-width: 0 !important;\n  text-align:center;\n}\n .previewCartInfo .button-checkout:hover,\n .cart-content-empty .button-continue:hover {\nborder-color:var(--iamcolor);\ncolor:var(--iamcolor);\nbackground: #FFF0 !important;\n}\n@media (hover: hover) {\n .previewCartInfo .button-checkout:hover,\n .cart-content-empty .button-continue:hover {\n    animation: style_hover .375s ease-out forwards ; \n  }\n} \n .previewCartInfo .button-continue, \n .previewCartInfo .button-continue:hover,\n .previewCartInfo .button-view-cart,\n .previewCartInfo .button-view-cart:hover {\n  background: #0000 !important;\n  text-decoration: underline;\n  text-transform: capitalize;\n  letter-spacing: 0;\n  font-size: 16px;\n  font-weight: 500;\n  border: none;\n padding:5px 0 !important;\n  width: fit-content;\n  margin: 10px 10px 0  auto !important;\n  opacity: 1 !important;\n  display:inline-block;\n  min-width: 0 !important;\n\n  transition: all 0s !important;\n}\n .previewCartInfo .button-continue:hover,\n .previewCartInfo .button-view-cart:hover {\n  text-decoration: none;\n  opacity: 1 !important;\n  color:#000 !important;\n}\n\n</style>"
+      }
+    },
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement-bar-0": {
+          "type": "announcement",
+          "settings": {
+            "text": "<div class=\"message\">\nFREE SHIPPING for all  <span class=\"Nobrk\">orders over $50.00!</span>\n</div>",
+            "btn_color": "#1c1d1b",
+            "btn_border_color": "#2da116",
+            "btn_bg_color": "#727272",
+            "btn_bg_color_gradient": "linear-gradient(46deg, rgba(52, 133, 236, 1) 13%, rgba(170, 248, 219, 1) 86%)"
+          }
+        }
+      },
+      "block_order": [
+        "announcement-bar-0"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".announcement-bar {background: var(--iamcolor);}",
+        ".announcement-close {display: none;}",
+        ".message {line-height: 1;}"
+      ],
+      "settings": {
+        "enable_announcement": true,
+        "layout": "slider",
+        "enable_close": true,
+        "color_text": "#1c1d1b",
+        "bg_color_text": "#ffe8e8",
+        "bg_color_text_gradient": "",
+        "font_size_text": 16,
+        "font_style_text": "normal",
+        "font_weight_text": "900",
+        "arrow_active": false,
+        "content_max_width": 100,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "header-classic": {
+      "type": "header-classic",
+      "blocks": {
+        "a2e4ea2e-73e5-4452-8129-d86dbbae584d": {
+          "type": "logo",
+          "disabled": true,
+          "settings": {
+            "logo_width": 200,
+            "logo_text": "<svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" viewbox=\"0 0 1366 480\" style=\"enable-background:new 0 0 1366 480;\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\">\n<rect x=\"-1\" y=\"-0.8\" class=\"header_logo_back\" width=\"1366\" height=\"480\"></rect>\n<g>\n\t<polygon class=\"iam_shape\" points=\"1093.1,106.9 997.1,106.9 961.9,243.7 928.4,106.9 830.3,106.9 813.9,336.8 875.2,336.8 886.7,179.5 \n\t\t925.2,335.1 925.6,336.8 993.4,336.8 1032.5,182.6 1046.6,334.8 1046.8,336.8 1113.2,336.8 \t\"></polygon>\n\t<rect x=\"483.4\" y=\"106.9\" class=\"iam_shape\" width=\"67.3\" height=\"229.9\"></rect>\n\t<path class=\"iam_shape\" d=\"M732.6,106.9h-94.2l-69.7,229.9h70l10.4-39.3h72.1l10.8,39.3h71.2l-70.2-228.3L732.6,106.9z M707.5,247.4\n\t\th-45.2l22.4-83.9L707.5,247.4z\"></path>\n</g>\n<polygon class=\"logo_shape\" points=\"382.4,376.6 365.2,192.7 318.6,376.6 237.1,376.6 190.8,189.1 177.1,376.6 103.2,376.6 122.9,100.7 \n\t240.8,100.7 280.8,264 322.7,100.7 438.1,100.7 462.2,376.6 \"></polygon>\n<rect x=\"1171.8\" y=\"100.7\" class=\"logo_shape\" width=\"81\" height=\"275.8\"></rect>\n<polygon class=\"logo_shape\" points=\"659.4,249.7 710.4,249.7 684.6,154.9 \"></polygon>\n<path class=\"logo_shape\" d=\"M1048.9,334.6l-15.4-165.2l-41.9,165.2h-64.3l-41.9-169.4l-12.3,169.4h-56.8l16-225.4h94.3L961.9,253\n\tl36.9-143.8h92.3l19.6,225.4H1048.9z M733.7,334.6l-10.8-39.3h-75.6l-10.4,39.3h-65.2l68.4-225.4H731l69.3,225.4H733.7z\n\t M548.5,334.6h-62.8V109.1h62.8V334.6z M1132.7,137.7l-0.1-1.3l-35.7-35.7H992.3L975,167.9l-7.8-31.8l-35.4-35.4H824.6l-12,169.6\n\tL771.5,137l-0.3-0.9l-35.3-35.3h-102l-43.3,142.7v-107l-35.8-35.8h-77.4v240l35.8,35.8H677l10.4-39.3h38.3l1.1,4l35.4,35.4h152.4\n\tl3.3-45.5l2.5,10.1l35.4,35.4h76l9.2-36.3l0.1,0.6l35.7,35.6h76.7L1132.7,137.7z\"></path>\n<polygon class=\"logo_shape\" points=\"1284.4,360.6 1278.9,360.6 1278.9,376.6 1276.4,376.6 1276.4,360.6 1271.1,360.6 1271.1,358.3 \n\t1284.4,358.3 \"></polygon>\n<polygon class=\"logo_shape\" points=\"1304.3,376.6 1303.4,360.4 1298.2,376.6 1295.1,376.6 1290,360.3 1289.1,376.6 1286.7,376.6 \n\t1287.8,358.3 1291.9,358.3 1296.6,373.7 1301.7,358.3 1305.6,358.3 1307,376.6 \"></polygon>\n</svg>",
+            "logo_font_size": 30,
+            "logo_font_weight": "900",
+            "logo_text_transform": "uppercase",
+            "logo_color": "#232323",
+            "spacing": 0
+          }
+        },
+        "fde2cc21-cbc9-4c9a-ad68-7cc53ec68280": {
+          "type": "service",
+          "disabled": true,
+          "settings": {
+            "customer_service_text": "<p>Customer Service 091 234-ELLA</p>",
+            "text_color": "#323232",
+            "show_language_currency": true,
+            "language_currency_color": "#323232",
+            "show_search": true,
+            "search_color": "#323232",
+            "bg_search_color": "#fafafa",
+            "search_border_color": "#e7e7e7",
+            "search_icon_color": "#323232",
+            "spacing": 14
+          }
+        },
+        "5939cbc0-a9fd-48e0-adcd-1d945e05dc99": {
+          "type": "text",
+          "settings": {
+            "free_shipping_text": "<p>Free shipping on All Orders. No Minimum Purchase</p>",
+            "text_color": "#232323",
+            "spacing": 15
+          }
+        },
+        "group_PD4n9g": {
+          "type": "group",
+          "settings": {
+            "show_cart": true,
+            "cart_color": "#323232",
+            "cart_color_item": "#323232",
+            "cart_bg_item": "#ffe5e8",
+            "show_wishlist": true,
+            "wishlist_color": "#323232",
+            "show_customer": true,
+            "customer_color": "#323232",
+            "spacing": 0
+          }
+        }
+      },
+      "block_order": [
+        "a2e4ea2e-73e5-4452-8129-d86dbbae584d",
+        "fde2cc21-cbc9-4c9a-ad68-7cc53ec68280",
+        "5939cbc0-a9fd-48e0-adcd-1d945e05dc99",
+        "group_PD4n9g"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "container": "1770",
+        "padding_full_width": 0,
+        "background": "#f3f3f3",
+        "gradient": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "9c03747e-b054-4db8-8194-5a35c71f82ca": {
+      "type": "header-navigation-plain",
+      "blocks": {
+        "sections--14682829619277__9c03747e-b054-4db8-8194-5a35c71f82ca-1680876693acfad79f-0": {
+          "type": "logo",
+          "settings": {
+            "logo_position": "always",
+            "logo_width": 200,
+            "logo_width_fixed": 100,
+            "logo_text": "<svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" viewbox=\"0 0 1366 480\" style=\"enable-background:new 0 0 1366 480;\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\">\n<rect x=\"-1\" y=\"-0.8\" class=\"header_logo_back\" width=\"1366\" height=\"480\"></rect>\n<g>\n\t<polygon class=\"iam_shape\" points=\"1093.1,106.9 997.1,106.9 961.9,243.7 928.4,106.9 830.3,106.9 813.9,336.8 875.2,336.8 886.7,179.5 \n\t\t925.2,335.1 925.6,336.8 993.4,336.8 1032.5,182.6 1046.6,334.8 1046.8,336.8 1113.2,336.8 \t\"></polygon>\n\t<rect x=\"483.4\" y=\"106.9\" class=\"iam_shape\" width=\"67.3\" height=\"229.9\"></rect>\n\t<path class=\"iam_shape\" d=\"M732.6,106.9h-94.2l-69.7,229.9h70l10.4-39.3h72.1l10.8,39.3h71.2l-70.2-228.3L732.6,106.9z M707.5,247.4\n\t\th-45.2l22.4-83.9L707.5,247.4z\"></path>\n</g>\n<polygon class=\"logo_shape\" points=\"382.4,376.6 365.2,192.7 318.6,376.6 237.1,376.6 190.8,189.1 177.1,376.6 103.2,376.6 122.9,100.7 \n\t240.8,100.7 280.8,264 322.7,100.7 438.1,100.7 462.2,376.6 \"></polygon>\n<rect x=\"1171.8\" y=\"100.7\" class=\"logo_shape\" width=\"81\" height=\"275.8\"></rect>\n<polygon class=\"logo_shape\" points=\"659.4,249.7 710.4,249.7 684.6,154.9 \"></polygon>\n<path class=\"logo_shape\" d=\"M1048.9,334.6l-15.4-165.2l-41.9,165.2h-64.3l-41.9-169.4l-12.3,169.4h-56.8l16-225.4h94.3L961.9,253\n\tl36.9-143.8h92.3l19.6,225.4H1048.9z M733.7,334.6l-10.8-39.3h-75.6l-10.4,39.3h-65.2l68.4-225.4H731l69.3,225.4H733.7z\n\t M548.5,334.6h-62.8V109.1h62.8V334.6z M1132.7,137.7l-0.1-1.3l-35.7-35.7H992.3L975,167.9l-7.8-31.8l-35.4-35.4H824.6l-12,169.6\n\tL771.5,137l-0.3-0.9l-35.3-35.3h-102l-43.3,142.7v-107l-35.8-35.8h-77.4v240l35.8,35.8H677l10.4-39.3h38.3l1.1,4l35.4,35.4h152.4\n\tl3.3-45.5l2.5,10.1l35.4,35.4h76l9.2-36.3l0.1,0.6l35.7,35.6h76.7L1132.7,137.7z\"></path>\n<polygon class=\"logo_shape\" points=\"1284.4,360.6 1278.9,360.6 1278.9,376.6 1276.4,376.6 1276.4,360.6 1271.1,360.6 1271.1,358.3 \n\t1284.4,358.3 \"></polygon>\n<polygon class=\"logo_shape\" points=\"1304.3,376.6 1303.4,360.4 1298.2,376.6 1295.1,376.6 1290,360.3 1289.1,376.6 1286.7,376.6 \n\t1287.8,358.3 1291.9,358.3 1296.6,373.7 1301.7,358.3 1305.6,358.3 1307,376.6 \"></polygon>\n</svg>",
+            "logo_font_size": 15,
+            "logo_font_weight": "900",
+            "logo_text_transform": "uppercase",
+            "logo_color": "#f0f0f1"
+          }
+        },
+        "54786c97-e881-45f5-a30a-6fdb552a963e": {
+          "type": "main_menu",
+          "settings": {
+            "menu": "main-menu-2025",
+            "menu_top_spacing": 10,
+            "menu_bottom_spacing": 12,
+            "grid_gap_menu_item": 20,
+            "alignment": "center",
+            "bg_mega_menu": "#ffffff",
+            "bg_mega_menu_gradient": "",
+            "lv_1_color": "#ffffff",
+            "lv_1_color_hover": "#ebb0b8",
+            "lv_2_color": "#232323",
+            "lv_2_color_hover": "#232323",
+            "lv_3_color": "#3c3c3c",
+            "lv_3_color_hover": "#3c3c3c",
+            "sale_item_1": "",
+            "sale_item_2": "",
+            "sale_item_3": "",
+            "sale_item_color": "#d12442",
+            "label_position": "main_menu",
+            "show_label_blink": false,
+            "new_label_1": "",
+            "new_label_2": "",
+            "new_label_3": "",
+            "new_label_color": "#ffffff",
+            "new_label_bg": "#bae4ed",
+            "new_label_bg_gradient": "",
+            "sale_label_1": "",
+            "sale_label_2": "",
+            "sale_label_3": "",
+            "sale_label_color": "#ffffff",
+            "sale_label_bg": "#d12442",
+            "sale_label_bg_gradient": "",
+            "hot_label_1": "",
+            "hot_label_2": "",
+            "hot_label_3": "",
+            "hot_label_color": "#ffffff",
+            "hot_label_bg": "#fff993",
+            "hot_label_bg_gradient": ""
+          }
+        },
+        "sections--14682829619277__9c03747e-b054-4db8-8194-5a35c71f82ca-1680876693acfad79f-2": {
+          "type": "header_icons",
+          "settings": {
+            "show_language_currency": false,
+            "show_search": true,
+            "show_customer": false,
+            "show_wishlist": false,
+            "show_cart": true,
+            "text_font_size": 14,
+            "show_language_currency_sticky": false,
+            "show_search_sticky": true,
+            "show_customer_sticky": false,
+            "show_wishlist_sticky": false,
+            "show_cart_sticky": true,
+            "header_icons_color": "#ffffff",
+            "header_icons_color_hover": "#ffffff",
+            "header_icons_border_color": "rgba(0,0,0,0)",
+            "header_icons_border_sticky_color": "#232323",
+            "cart_count_bubble_color": "#323232",
+            "cart_count_bubble_bg": "#ffe5e8",
+            "cart_count_bubble_bg_gradient": ""
+          }
+        },
+        "d3131109-9329-42fa-bbb5-d25d01fd698b": {
+          "type": "megamenu_style_1",
+          "disabled": true,
+          "settings": {
+            "layout_block": "custom_width",
+            "header_custom_width_size": 1200,
+            "item": "new in",
+            "column": 3,
+            "show_banner_1": true,
+            "banner_url_1": "shopify://collections/blazero",
+            "show_product": true,
+            "product_title": "Featured Products",
+            "product_collection": "naminos-dementus-a-dincidunto-5"
+          }
+        },
+        "0e4cbbf3-fe5e-4e10-a837-c7651f114767": {
+          "type": "megamenu_style_2",
+          "disabled": true,
+          "settings": {
+            "layout_block": "custom_width",
+            "header_custom_width_size": 1200,
+            "item": "trend",
+            "column": 3,
+            "show_banner_1": true,
+            "banner_url_1": "shopify://collections/congue",
+            "show_banner_2": true,
+            "banner_url_2": "shopify://collections/cosmopolis",
+            "show_banner_3": true,
+            "banner_url_3": "shopify://collections/cosmopolitan"
+          }
+        },
+        "4d022900-5ec2-41b0-89c1-edea75a13c28": {
+          "type": "megamenu_style_3",
+          "disabled": true,
+          "settings": {
+            "layout_block": "custom_width",
+            "header_custom_width_size": 1200,
+            "mega_tyle": "style1",
+            "item": "collections",
+            "column": 5,
+            "show_banner_1": true,
+            "banner_url_1": "shopify://products/dempus-lortis-cosmo-sapiendo",
+            "show_banner_2": true,
+            "banner_url_2": "shopify://products/dempus-lortis-cosmo-sapiendo-1",
+            "show_banner_3": true,
+            "banner_url_3": "shopify://products/dempus-lortis-cosmo-sapiendo-2",
+            "show_banner_4": true,
+            "banner_url_4": "shopify://products/dempus-lortis-cosmo-sapiendo-3",
+            "show_banner_5": true,
+            "banner_url_5": "shopify://products/dempus-an-lortis-tempus-sapiendos"
+          }
+        },
+        "23b6fa6d-4f30-4a97-8dc1-2c516f8a7f0e": {
+          "type": "megamenu_style_1",
+          "disabled": true,
+          "settings": {
+            "layout_block": "custom_width",
+            "header_custom_width_size": 1200,
+            "item": "demo",
+            "column": 5,
+            "show_banner_1": false,
+            "banner_url_1": "shopify://products/dempus-lortis-cosmo-sapiendo-4",
+            "show_product": false,
+            "product_title": "On Sale Products",
+            "product_collection": "dempus-an-lortis-tempus-sapiendos"
+          }
+        },
+        "3d2520ed-30fc-4694-a7bd-8479ad2d6892": {
+          "type": "megamenu_style_1",
+          "disabled": true,
+          "settings": {
+            "layout_block": "custom_width",
+            "header_custom_width_size": 1200,
+            "item": "Theme Demo",
+            "column": 5,
+            "show_banner_1": false,
+            "banner_url_1": "",
+            "show_product": false,
+            "product_title": "Featured Products",
+            "product_collection": ""
+          }
+        },
+        "01014ccc-ffe5-4c78-b814-da3ff7d8b45c": {
+          "type": "megamenu_style_1",
+          "disabled": true,
+          "settings": {
+            "layout_block": "custom_width",
+            "header_custom_width_size": 1200,
+            "item": "Shop",
+            "column": 4,
+            "show_banner_1": false,
+            "banner_url_1": "",
+            "show_product": false,
+            "product_title": "Featured Products",
+            "product_collection": ""
+          }
+        },
+        "ec0f7e9f-1012-463e-a1fd-f9225f7f1cc3": {
+          "type": "megamenu_style_1",
+          "disabled": true,
+          "settings": {
+            "layout_block": "custom_width",
+            "header_custom_width_size": 1200,
+            "item": "Product",
+            "column": 5,
+            "show_banner_1": false,
+            "banner_url_1": "",
+            "show_product": false,
+            "product_title": "Featured Products",
+            "product_collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "sections--14682829619277__9c03747e-b054-4db8-8194-5a35c71f82ca-1680876693acfad79f-0",
+        "54786c97-e881-45f5-a30a-6fdb552a963e",
+        "sections--14682829619277__9c03747e-b054-4db8-8194-5a35c71f82ca-1680876693acfad79f-2",
+        "d3131109-9329-42fa-bbb5-d25d01fd698b",
+        "0e4cbbf3-fe5e-4e10-a837-c7651f114767",
+        "4d022900-5ec2-41b0-89c1-edea75a13c28",
+        "23b6fa6d-4f30-4a97-8dc1-2c516f8a7f0e",
+        "3d2520ed-30fc-4694-a7bd-8479ad2d6892",
+        "01014ccc-ffe5-4c78-b814-da3ff7d8b45c",
+        "ec0f7e9f-1012-463e-a1fd-f9225f7f1cc3"
+      ],
+      "custom_css": [
+        ".header_logo_back {border: none; background: transparent !important; transition: all var(--trantimer) linear; fill: #fff0 !important;}",
+        ".text {font-weight: 900;}",
+        ".header__active-menu-item {color: var(--iamcolor) !important;}",
+        "a:hover .header__active-menu-item {color: #000 !important;}"
+      ],
+      "settings": {
+        "container": "1770",
+        "padding_full_width": 0,
+        "header_navigation_bg": "#3d4243",
+        "header_navigation_bg_gradient": "",
+        "sticky_header_type": "always",
+        "sticky_header_width": "default",
+        "enable_transparent": false,
+        "transparent_color": "#f0f0f1",
+        "transparent_color_hover": "#ca4286"
+      }
+    },
+    "header-mobile": {
+      "type": "header-mobile",
+      "blocks": {
+        "7de2266e-0cd4-4fda-9f09-06f75a17f944": {
+          "type": "menu",
+          "settings": {
+            "color": "#3d4243"
+          }
+        },
+        "163e2cb5-14f2-4af6-9ac3-77193c082f53": {
+          "type": "search",
+          "disabled": true,
+          "settings": {
+            "color": "#232323"
+          }
+        },
+        "550fbd21-75fb-4051-9dee-77d91b5239f0": {
+          "type": "logo",
+          "settings": {
+            "logo_width_mobile": 150,
+            "logo_text": "<svg version=\"1.1\" id=\"Layer_2\" xmlns=\"http://www.w3.org/2000/svg\" x=\"0px\" y=\"0px\" viewbox=\"0 0 1366 480\" style=\"enable-background:new 0 0 1366 480;\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\">\n<rect x=\"-1\" y=\"-0.8\" class=\"header_logo_back\" width=\"1366\" height=\"480\"></rect>\n<g>\n\t<polygon class=\"iam_shape\" points=\"1093.1,106.9 997.1,106.9 961.9,243.7 928.4,106.9 830.3,106.9 813.9,336.8 875.2,336.8 886.7,179.5 \n\t\t925.2,335.1 925.6,336.8 993.4,336.8 1032.5,182.6 1046.6,334.8 1046.8,336.8 1113.2,336.8 \t\"></polygon>\n\t<rect x=\"483.4\" y=\"106.9\" class=\"iam_shape\" width=\"67.3\" height=\"229.9\"></rect>\n\t<path class=\"iam_shape\" d=\"M732.6,106.9h-94.2l-69.7,229.9h70l10.4-39.3h72.1l10.8,39.3h71.2l-70.2-228.3L732.6,106.9z M707.5,247.4\n\t\th-45.2l22.4-83.9L707.5,247.4z\"></path>\n</g>\n<polygon class=\"logo_shape\" points=\"382.4,376.6 365.2,192.7 318.6,376.6 237.1,376.6 190.8,189.1 177.1,376.6 103.2,376.6 122.9,100.7 \n\t240.8,100.7 280.8,264 322.7,100.7 438.1,100.7 462.2,376.6 \"></polygon>\n<rect x=\"1171.8\" y=\"100.7\" class=\"logo_shape\" width=\"81\" height=\"275.8\"></rect>\n<polygon class=\"logo_shape\" points=\"659.4,249.7 710.4,249.7 684.6,154.9 \"></polygon>\n<path class=\"logo_shape\" d=\"M1048.9,334.6l-15.4-165.2l-41.9,165.2h-64.3l-41.9-169.4l-12.3,169.4h-56.8l16-225.4h94.3L961.9,253\n\tl36.9-143.8h92.3l19.6,225.4H1048.9z M733.7,334.6l-10.8-39.3h-75.6l-10.4,39.3h-65.2l68.4-225.4H731l69.3,225.4H733.7z\n\t M548.5,334.6h-62.8V109.1h62.8V334.6z M1132.7,137.7l-0.1-1.3l-35.7-35.7H992.3L975,167.9l-7.8-31.8l-35.4-35.4H824.6l-12,169.6\n\tL771.5,137l-0.3-0.9l-35.3-35.3h-102l-43.3,142.7v-107l-35.8-35.8h-77.4v240l35.8,35.8H677l10.4-39.3h38.3l1.1,4l35.4,35.4h152.4\n\tl3.3-45.5l2.5,10.1l35.4,35.4h76l9.2-36.3l0.1,0.6l35.7,35.6h76.7L1132.7,137.7z\"></path>\n<polygon class=\"logo_shape\" points=\"1284.4,360.6 1278.9,360.6 1278.9,376.6 1276.4,376.6 1276.4,360.6 1271.1,360.6 1271.1,358.3 \n\t1284.4,358.3 \"></polygon>\n<polygon class=\"logo_shape\" points=\"1304.3,376.6 1303.4,360.4 1298.2,376.6 1295.1,376.6 1290,360.3 1289.1,376.6 1286.7,376.6 \n\t1287.8,358.3 1291.9,358.3 1296.6,373.7 1301.7,358.3 1305.6,358.3 1307,376.6 \"></polygon>\n</svg>",
+            "logo_font_size": 20,
+            "logo_font_weight": "900",
+            "logo_text_transform": "uppercase",
+            "logo_color": "#232323"
+          }
+        },
+        "20dae707-64c0-4ea3-a05e-561cae9836d8": {
+          "type": "customer",
+          "disabled": true,
+          "settings": {
+            "icon": "1",
+            "color": "#232323"
+          }
+        },
+        "633f9dae-3f65-4bda-9ca8-9d3e231aaf9d": {
+          "type": "cart",
+          "settings": {
+            "icon": "2",
+            "color": "#232323",
+            "color_bubble": "#ffffff",
+            "bg_bubble": "#232323"
+          }
+        }
+      },
+      "block_order": [
+        "7de2266e-0cd4-4fda-9f09-06f75a17f944",
+        "163e2cb5-14f2-4af6-9ac3-77193c082f53",
+        "550fbd21-75fb-4051-9dee-77d91b5239f0",
+        "20dae707-64c0-4ea3-a05e-561cae9836d8",
+        "633f9dae-3f65-4bda-9ca8-9d3e231aaf9d"
+      ],
+      "custom_css": [
+        ".header-mobile__item .icon {fill: #fff !important;}",
+        ".mobileMenu-toggle__Icon,.mobileMenu-toggle__Icon:before,.mobileMenu-toggle__Icon:after {background-color: #fff !important;}",
+        ".header-mobile__item .header__icon--cart .cart-count-bubble {background-color: rgb(235, 176, 184);}",
+        ".header-mobile {border-bottom: none;}",
+        ".menu-lv-1__action {font-weight: 900 !important;}",
+        ".header__menu-item[aria-current=\"page\"] {color: var(--iamcolor) !important;}",
+        ".header__menu-item[aria-current=\"page\"]:hover {color: #000 !important;}"
+      ],
+      "settings": {
+        "background": "#3d4243",
+        "gradient": "",
+        "sticky_header_type": "on_scroll",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "custom_liquid_BtB9bV",
+    "announcement-bar",
+    "header-classic",
+    "9c03747e-b054-4db8-8194-5a35c71f82ca",
+    "header-mobile"
+  ]
+}

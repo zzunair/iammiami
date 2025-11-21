@@ -1,0 +1,186 @@
+<!doctype html>
+{%- liquid
+    if settings.list_iso_rtl != blank
+        assign locale_iso_code = request.locale.iso_code
+        assign arr_list_rtl = settings.list_iso_rtl | remove:' ' | split:',' 
+        if arr_list_rtl contains locale_iso_code
+            assign enable_iso_rtl = true
+        else
+            assign enable_iso_rtl = false
+        endif
+    endif
+-%}
+<html class="no-js" lang="{{ request.locale.iso_code }}"{% if settings.enable_layout_rtl and enable_iso_rtl %} dir="rtl"{% endif %}>
+    <head>
+	{% include 'autoketing-seo' %}
+
+	<!-- Added by AVADA SEO Suite -->
+	{% include 'avada-seo' %}
+	<!-- /Added by AVADA SEO Suite -->
+      <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-K2TRPFHN');</script>
+<!-- End Google Tag Manager -->
+      <meta name="facebook-domain-verification" content="sfljtr6fv2nix7wgdk2aoncec5e43a" />
+      <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K8B41HLDFX"></script>
+<script>
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
+ gtag('config', 'G-K8B41HLDFX');
+</script>
+<!-- Start VWO Async SmartCode -->
+<link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
+<script type='text/javascript' id='vwoCode'>
+window._vwo_code || (function() {
+var account_id=953855,
+version=2.1,
+settings_tolerance=2000,
+hide_element='body',
+hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;transition:none !important;',
+/* DO NOT EDIT BELOW THIS LINE */
+f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+'_settings',cc={};try{var c=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=c&&typeof c==='object'?c:{}}catch(e){}var stT=cc.stT==='session'?w.sessionStorage:w.localStorage;code={nonce:v&&v.nonce,use_existing_jquery:function(){return typeof use_existing_jquery!=='undefined'?use_existing_jquery:undefined},library_tolerance:function(){return typeof library_tolerance!=='undefined'?library_tolerance:undefined},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){if(performance.getEntriesByName('first-contentful-paint')[0]){return''}return typeof cc.hE==='string'?cc.hE:hide_element},getVersion:function(){return version},finish:function(e){if(!f){f=true;var t=d.getElementById('_vis_opt_path_hides');if(t)t.parentNode.removeChild(t);if(e)(new Image).src='https://dev.visualwebsiteoptimizer.com/ee.gif?a='+account_id+e}},finished:function(){return f},addScript:function(e){var t=d.createElement('script');t.type='text/javascript';if(e.src){t.src=e.src}else{t.text=e.text}v&&t.setAttribute('nonce',v.nonce);d.getElementsByTagName('head')[0].appendChild(t)},load:function(e,t){var n=this.getSettings(),i=d.createElement('script'),r=this;t=t||{};if(n){i.textContent=n;d.getElementsByTagName('head')[0].appendChild(i);if(!w.VWO||VWO.caE){stT.removeItem(cK);r.load(e)}}else{var o=new XMLHttpRequest;o.open('GET',e,true);o.withCredentials=!t.dSC;o.responseType=t.responseType||'text';o.onload=function(){if(t.onloadCb){return t.onloadCb(o,e)}if(o.status===200||o.status===304){_vwo_code.addScript({text:o.responseText})}else{_vwo_code.finish('&e=loading_failure:'+e)}};o.onerror=function(){if(t.onerrorCb){return t.onerrorCb(e)}_vwo_code.finish('&e=loading_failure:'+e)};o.send()}},getSettings:function(){try{var e=stT.getItem(cK);if(!e){return}e=JSON.parse(e);if(Date.now()>e.e){stT.removeItem(cK);return}return e.s}catch(e){return}},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;var e=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish();stT.removeItem(cK)},e);var t;if(this.hide_element()!=='body'){t=d.createElement('style');var n=this.hide_element(),i=n?n+this.hide_element_style():'',r=d.getElementsByTagName('head')[0];t.setAttribute('id','_vis_opt_path_hides');v&&t.setAttribute('nonce',v.nonce);t.setAttribute('type','text/css');if(t.styleSheet)t.styleSheet.cssText=i;else t.appendChild(d.createTextNode(i));r.appendChild(t)}else{t=d.getElementsByTagName('head')[0];var i=d.createElement('div');i.style.cssText='z-index: 2147483647 !important;position: fixed !important;left: 0 !important;top: 0 !important;width: 100% !important;height: 100% !important;background: white !important;';i.setAttribute('id','_vis_opt_path_hides');i.classList.add('_vis_hide_layer');t.parentNode.insertBefore(i,t.nextSibling)}var o=window._vis_opt_url||d.URL,s='https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(o)+'&vn='+version;if(w.location.search.indexOf('_vwo_xhr')!==-1){this.addScript({src:s})}else{this.load(s+'&x=true')}}};w._vwo_code=code;code.init();})();
+</script>
+<!-- End VWO Async SmartCode -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta name="google-site-verification" content="8Im2set6JW70YA5LUjdnP2PFlrWhTF7iBQlIlWYK45Y" />
+        <meta name="theme-color" content="">
+        <link rel="canonical" href="{{ canonical_url }}">
+        <link rel="canonical" href="{{ canonical_url }}" canonical-shop-url="{{ shop.url }}/">
+        {%- if settings.favicon != blank -%}
+            <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+        {%- endif -%}
+        <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+        <title>{{ page_title }} {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%} {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%} {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}</title>
+
+        {%- if page_description -%}
+            <meta name="description" content="{{ page_description | escape }}">
+        {%- endif -%}
+        {% render 'meta-tags' %}
+        {{ content_for_header }}
+        {% render 'variable' %}
+        {% render 'global-style' %}
+        {% render 'global-script' %}
+
+        <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+
+        {%- liquid
+            if settings.layout_body == 'full'
+                assign layout_body = 'body-full-width'
+            elsif settings.layout_body == 'boxed'
+                assign layout_body = 'body-boxed'
+            elsif settings.layout_body == 'custom_width'
+                assign layout_body = 'body-custom-width'
+            endif
+        
+            if settings.style_dots == '02'
+                assign style_dots = 'style-dots-2'
+            endif
+        
+            if settings.style_arrows == '02'
+                assign style_arrows = 'style-arrows-2'
+            elsif settings.style_arrows == '05'
+                assign style_arrows = 'style-arrows-5'
+            endif
+        
+            if settings.product_card_layout == '02'
+                assign product_card_layout = 'product-card-layout-02'
+            elsif settings.product_card_layout == '03'
+                assign product_card_layout = 'product-card-layout-03'
+            elsif settings.product_card_layout == '04'
+                assign product_card_layout = 'product-card-layout-04'
+            elsif settings.product_card_layout == '05'
+                assign product_card_layout = 'product-card-layout-05'
+            elsif settings.product_card_layout == '06'
+                assign product_card_layout = 'product-card-layout-06'
+            elsif settings.product_card_layout == '07'
+                assign product_card_layout = 'product-card-layout-07'
+            else
+                assign product_card_layout = 'product-card-layout-01'
+            endif
+        
+            if settings.quick_shop_type == '2'
+                assign quick_shop_type = 'quick_shop_option_2'
+            elsif  settings.quick_shop_type == '3'
+                assign quick_shop_type = 'quick_shop_option_3'
+            endif
+        
+            if settings.style_text_size_varriant == '02'
+                assign style_text_size_varriant = 'size_varriant_style_2'
+            endif
+        -%}
+    
+	{% include 'autoketing-end-head-seo' %}
+<!-- Hotjar Tracking Code for IAMMIAMI -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:5277653,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+</head>
+
+    <body class="template-{{ request.page_type }} {{layout_body}} {{style_dots}} {{style_text_size_varriant}} {{style_arrows}} {{product_card_layout}} {% if settings.enable_button_disable_arrows %} enable_button_disable_arrows{% endif %}{% if settings.display_text_color_title %} enable_text_color_title{% endif %}{% if settings.style_text_color_varriant == '02' %} style_2_text_color_varriant{% endif %}{% if settings.hide_compare_homepage %} hide_compare_homepage{% endif %} {{ quick_shop_type }}{% if settings.show_image_loading %} show_image_loading{% endif %}{% if settings.show_effect_close %} show_effect_close{% endif %}{% if settings.enable_layout_rtl and enable_iso_rtl %} layout_rtl{% endif %}{% if request.design_mode %} shopify-design-mode{% endif %}{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
+        <div class="body-content-wrapper">
+            <a class="skip-to-content-link button visually-hidden" href="#MainContent">{{ "accessibility.skip_to_text" | t }}</a>
+
+            {% sections 'header-group' %}
+            {% render 'wrapper-header' %}
+            
+            {%- if settings.layout_body == 'boxed' -%}
+                <div class="wrapper-hasbanner-adv">
+            {%- endif -%}
+                {% render 'halo-banner-adv-left' %}
+                {% render 'halo-banner-adv-right' %}
+                <main id="MainContent" class="wrapper-body content-for-layout focus-none" role="main" tabindex="-1">
+                    {{ content_for_layout }}
+                </main>
+            {%- if settings.layout_body == 'boxed' -%}        
+                </div>
+            {%- endif -%}
+            
+            <div class="wrapper-footer">{% sections 'footer-group' %}</div>
+
+            {% section 'halo-toolbar-mobile' %}
+
+            <ul hidden><li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li></ul>
+            
+            {% render 'global-script-2' %}
+        </div>
+        {% render 'halo-popup' %}
+
+        {%- if settings.enable_view_documentation -%}
+            {% render 'theme-editor-notification' %}
+        {%- endif -%}
+        
+        {%- if settings.use_custom_js -%}
+            {{ 'custom.js' | asset_url | script_tag }}
+        {%- endif -%}
+        
+        <div class="background-overlay">
+            {%- if settings.show_effect_close -%}
+            <div class="background-cursor-wrapper">
+                <div class="background-cursor-wrapper_outer">
+                    <div class="background-cursor-wrapper_inner"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="20" height="20"><g class="nc-icon-wrapper" fill="#ffffff" transform="translate(0.5, 0.5)"><line fill="none" stroke-width="6" x1="46" y1="2" x2="2" y2="46"/> <line fill="none" stroke-width="6" x1="46" y1="46" x2="2" y2="2"/></g></svg></div>
+                </div>
+            </div>
+            {%- endif -%}
+        </div>
+        {% render 'halo-sidebar' %}
+                      <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2TRPFHN"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    </body>
+           
+</html>
