@@ -1,0 +1,231 @@
+.cs-product-row {
+  /* padding: 60px 20px; */
+}
+
+.cs-product-row__wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* gap: 20px; */
+  /* max-width: 1400px; */
+  margin: 0 auto;
+  /* flex-wrap: wrap; */
+  justify-content: center;
+}
+
+.cs-product-row__item {
+  flex: 1;
+  /* min-width: 200px; */
+  /* max-width: 280px; */
+  /* background-color: #ffffff; */
+  /* border-radius: 8px; */
+  padding: 0 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.cs-product-row__item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.cs-product-row__link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cs-product-row__image-wrapper {
+  width: 100%;
+  max-width: 290px;
+  /* height: 200px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.cs-product-row__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: opacity 0.3s ease;
+}
+
+.cs-product-row__title {
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1.2;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #000;
+  text-align: center;
+}
+
+.cs-product-row__size {
+  font-size: 14px;
+  margin: 0 0 15px 0;
+  color: #666;
+  text-transform: lowercase;
+}
+
+.cs-product-row__swatches {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.cs-product-row__swatch {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.cs-product-row__swatch:hover {
+  transform: scale(1.1);
+}
+
+.cs-product-row__swatch * {
+  pointer-events: auto;
+}
+
+.cs-product-row__swatch-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cs-product-row__swatch-label {
+  display: block;
+  cursor: pointer;
+}
+
+.cs-product-row__swatch-circle {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  position: relative;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cs-product-row__swatch-circle::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  transition: border-color 0.2s ease;
+}
+
+.cs-product-row__swatch-input:checked
+  + .cs-product-row__swatch-label
+  .cs-product-row__swatch-circle::before {
+  border-color: #000;
+}
+
+.cs-product-row__price {
+  display: inline-block;
+  width: fit-content;
+  background-color: #000;
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: auto;
+}
+
+/* Tablet - 768px to 1024px */
+@media (max-width: 1024px) {
+  .cs-product-row__wrapper {
+    gap: 15px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cs-product-row__item {
+    min-width: 180px;
+    max-width: 240px;
+    padding: 15px;
+  }
+
+  .cs-product-row__image-wrapper {
+    max-width: 180px;
+    height: 180px;
+  }
+
+  .cs-product-row__title {
+    font-size: 14px;
+  }
+}
+
+/* Mobile - below 768px */
+@media (max-width: 768px) {
+  .cs-product-row {
+    padding: 40px 15px;
+  }
+
+  .cs-product-row__wrapper {
+    gap: 15px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cs-product-row__item {
+    min-width: 100%;
+    max-width: 300px;
+    width: 100%;
+  }
+
+  .cs-product-row__image-wrapper {
+    max-width: 250px;
+    height: 250px;
+  }
+
+  .cs-product-row__title {
+    font-size: 16px;
+  }
+}
+
+/* Small mobile - below 480px */
+@media (max-width: 480px) {
+  .cs-product-row {
+    padding: 30px 10px;
+  }
+
+  .cs-product-row__item {
+    padding: 15px;
+  }
+
+  .cs-product-row__image-wrapper {
+    max-width: 200px;
+    height: 200px;
+  }
+
+  .cs-product-row__title {
+    font-size: 14px;
+  }
+
+  .cs-product-row__price {
+    font-size: 14px;
+    padding: 6px 16px;
+  }
+}
+
