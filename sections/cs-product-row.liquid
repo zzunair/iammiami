@@ -1,0 +1,408 @@
+{{ 'cs-product-row.css' | asset_url | stylesheet_tag }}
+
+<section class="cs-product-row">
+  <div class="cs-product-row__wrapper">
+    {% for block in section.blocks %}
+      {% if block.type == 'product' %}
+        {% assign product = block.settings.product %}
+        {% assign custom_link = block.settings.custom_link %}
+        
+        {% comment %} Determine the link - custom link or product link {% endcomment %}
+        {% if custom_link != blank %}
+          {% assign product_url = custom_link %}
+        {% elsif product != blank %}
+          {% assign product_url = product.url %}
+        {% else %}
+          {% assign product_url = '#' %}
+        {% endif %}
+
+        <div class="cs-product-row__item" {{ block.shopify_attributes }} style="{% if block.settings.background_color != blank %}background-color: {{ block.settings.background_color }};{% endif %}">
+          <a href="{{ product_url }}" class="cs-product-row__link">
+            <div class="cs-product-row__image-wrapper">
+              {% if block.settings.image != blank %}
+                <img 
+                  id="cs-product-image-{{ block.id }}"
+                  class="cs-product-row__image" 
+                  src="{{ block.settings.image | img_url: '400x' }}" 
+                  alt="{{ block.settings.title | escape }}"
+                  loading="lazy"
+                >
+              {% elsif product != blank and product.featured_image != blank %}
+                <img 
+                  id="cs-product-image-{{ block.id }}"
+                  class="cs-product-row__image" 
+                  src="{{ product.featured_image | img_url: '400x' }}" 
+                  alt="{{ product.title | escape }}"
+                  loading="lazy"
+                >
+              {% else %}
+                <div style="width: 100%; height: 100%; background: #e0e0e0; display: flex; align-items: center; justify-content: center; border-radius: 4px;">
+                  <p style="color: #666; font-size: 12px;">No image</p>
+                </div>
+              {% endif %}
+            </div>
+
+            <h3 class="cs-product-row__title" style="{% if block.settings.text_color != blank %}color: {{ block.settings.text_color }};{% endif %}">
+              {% if block.settings.title != blank %}
+                {{ block.settings.title }}
+              {% elsif product != blank %}
+                {{ product.title }}
+              {% else %}
+                Product Title
+              {% endif %}
+            </h3>
+
+            {% if block.settings.size_text != blank %}
+              <p class="cs-product-row__size" style="{% if block.settings.text_color != blank %}color: {{ block.settings.text_color }}; opacity: 0.7;{% endif %}">
+                {{ block.settings.size_text }}
+              </p>
+            {% endif %}
+
+            {% comment %} Color Swatches {% endcomment %}
+            {% if block.settings.show_swatches and product != blank and product.variants.size > 1 %}
+              {% comment %} Identify which option is the color option {% endcomment %}
+              {% assign color_option_index = 0 %}
+              {% assign color_option_found = false %}
+              
+              {% for option in product.options_with_values %}
+                {% assign option_name_lower = option.name | downcase %}
+                {% if option_name_lower contains 'color' or option_name_lower contains 'colour' %}
+                  {% assign color_option_index = forloop.index0 %}
+                  {% assign color_option_found = true %}
+                  {% break %}
+                {% endif %}
+              {% endfor %}
+              
+              {% comment %} If no color option found, check if option1 looks like colors (not sizes) {% endcomment %}
+              {% unless color_option_found %}
+                {% assign first_option = product.options_with_values.first %}
+                {% assign first_option_lower = first_option.name | downcase %}
+                {% assign size_keywords = 'size,small,medium,large,xs,s,m,l,xl,xxl,xxxl,one size' | split: ',' %}
+                {% assign is_size_option = false %}
+                {% for keyword in size_keywords %}
+                  {% if first_option_lower contains keyword %}
+                    {% assign is_size_option = true %}
+                    {% break %}
+                  {% endif %}
+                {% endfor %}
+                {% unless is_size_option %}
+                  {% assign color_option_index = 0 %}
+                  {% assign color_option_found = true %}
+                {% endunless %}
+              {% endunless %}
+              
+              {% comment %} Collect unique color values using product options {% endcomment %}
+              {% if color_option_found %}
+                {% assign color_option = product.options_with_values[color_option_index] %}
+                <div class="cs-product-row__swatches">
+                  {% for color_value in color_option.values %}
+                    {% assign color_value_lower = color_value | downcase | strip %}
+                    {% assign swatch_color = '' %}
+                    
+                    {% comment %} Find first variant with this color to get variant ID and image {% endcomment %}
+                    {% assign selected_variant = null %}
+                    {% for variant in product.variants %}
+                      {% if color_option_index == 0 %}
+                        {% assign variant_color = variant.option1 | downcase | strip %}
+                      {% elsif color_option_index == 1 %}
+                        {% assign variant_color = variant.option2 | downcase | strip %}
+                      {% else %}
+                        {% assign variant_color = variant.option3 | downcase | strip %}
+                      {% endif %}
+                      
+                      {% if variant_color == color_value_lower %}
+                        {% assign selected_variant = variant %}
+                        {% break %}
+                      {% endif %}
+                    {% endfor %}
+                    
+                    {% comment %} Try to get color from variant metafield first {% endcomment %}
+                    {% if selected_variant != null and selected_variant.metafields.custom.swatch_color != blank %}
+                      {% assign swatch_color = selected_variant.metafields.custom.swatch_color %}
+                    {% endif %}
+                    
+                    {% comment %} If no metafield, use hardcoded brand colors {% endcomment %}
+                    {% if swatch_color == blank %}
+                      {% case color_value_lower %}
+                        {% when 'sun' %}
+                          {% assign swatch_color = '#F4D03F' %}
+                        {% when 'navy' %}
+                          {% assign swatch_color = '#1C3A57' %}
+                        {% when 'fog' %}
+                          {% assign swatch_color = '#C0C0C0' %}
+                        {% when 'white' %}
+                          {% assign swatch_color = '#FFFFFF' %}
+                        {% when 'black' %}
+                          {% assign swatch_color = '#000000' %}
+                        {% when 'yellow' %}
+                          {% assign swatch_color = '#F4D03F' %}
+                        {% when 'blue' %}
+                          {% assign swatch_color = '#1C3A57' %}
+                        {% when 'gray' or 'grey' %}
+                          {% assign swatch_color = '#C0C0C0' %}
+                        {% when 'red' %}
+                          {% assign swatch_color = '#E74C3C' %}
+                        {% when 'green' %}
+                          {% assign swatch_color = '#27AE60' %}
+                        {% when 'pink' %}
+                          {% assign swatch_color = '#F8B4D9' %}
+                        {% when 'orange' %}
+                          {% assign swatch_color = '#FF8C42' %}
+                        {% when 'brown' %}
+                          {% assign swatch_color = '#8B4513' %}
+                        {% when 'purple' %}
+                          {% assign swatch_color = '#9B59B6' %}
+                        {% when 'beige' %}
+                          {% assign swatch_color = '#F5F5DC' %}
+                        {% else %}
+                          {% assign swatch_color = '#CCCCCC' %}
+                      {% endcase %}
+                    {% endif %}
+
+                    {% if selected_variant != null %}
+                      <div class="cs-product-row__swatch">
+                        <input 
+                          type="radio" 
+                          name="variant-{{ block.id }}-{{ product.id }}" 
+                          id="variant-{{ block.id }}-{{ selected_variant.id }}" 
+                          value="{{ selected_variant.id }}"
+                          class="cs-product-row__swatch-input"
+                          data-variant-image="{% if selected_variant.image %}{{ selected_variant.image | img_url: '400x' }}{% elsif product.featured_image %}{{ product.featured_image | img_url: '400x' }}{% endif %}"
+                          data-image-id="cs-product-image-{{ block.id }}"
+                          {% if forloop.first %}checked{% endif %}
+                        >
+                        <label for="variant-{{ block.id }}-{{ selected_variant.id }}" class="cs-product-row__swatch-label">
+                          <span 
+                            class="cs-product-row__swatch-circle" 
+                            style="background-color: {{ swatch_color }};"
+                          ></span>
+                        </label>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endif %}
+
+            {% if block.settings.show_price and product != blank %}
+              <div class="cs-product-row__price">
+                {{ product.price | money }}
+              </div>
+            {% elsif block.settings.custom_price != blank %}
+              <div class="cs-product-row__price">
+                {{ block.settings.custom_price }}
+              </div>
+            {% endif %}
+          </a>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+<script>
+  // Handle variant swatch clicks and image switching
+  (function() {
+    function handleImageChange(input) {
+      const variantImage = input.getAttribute('data-variant-image');
+      const imageId = input.getAttribute('data-image-id');
+      
+      if (variantImage && imageId) {
+        const productImage = document.getElementById(imageId);
+        if (productImage) {
+          // Add a subtle fade effect
+          productImage.style.opacity = '0.7';
+          setTimeout(function() {
+            productImage.src = variantImage;
+            productImage.style.opacity = '1';
+          }, 150);
+        }
+      }
+    }
+    
+    function initSwatches() {
+      // Find all swatch containers
+      const swatchContainers = document.querySelectorAll('.cs-product-row__swatch');
+      
+      swatchContainers.forEach(function(container) {
+        const input = container.querySelector('.cs-product-row__swatch-input');
+        if (!input) return;
+        
+        // Handle click on entire swatch container
+        container.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          // Check the radio button
+          input.checked = true;
+          
+          // Trigger change event manually
+          const changeEvent = new Event('change', { bubbles: true });
+          input.dispatchEvent(changeEvent);
+          
+          // Change image
+          handleImageChange(input);
+        });
+        
+        // Also handle change event directly on input
+        input.addEventListener('change', function() {
+          handleImageChange(this);
+        });
+      });
+    }
+    
+    // Initialize immediately and on DOM ready
+    function runInit() {
+      initSwatches();
+    }
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', runInit);
+    } else {
+      runInit();
+    }
+    
+    // Also initialize for dynamically loaded content (Shopify theme editor)
+    if (typeof Shopify !== 'undefined' && Shopify.designMode) {
+      document.addEventListener('shopify:section:load', runInit);
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Product Row",
+  "tag": "section",
+  "class": "section-cs-product-row",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+
+    {
+      "type": "paragraph",
+      "content": "Add product blocks below. Products will display in a horizontal row with images on top."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select Product",
+          "info": "Product information will be pulled automatically"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "#ffffff",
+          "info": "Background color for this product card"
+        },
+        {
+          "type": "header",
+          "content": "Custom Content (Optional)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Custom Title",
+          "info": "Leave blank to use product title"
+        },
+        {
+          "type": "text",
+          "id": "size_text",
+          "label": "Size Text",
+          "default": "one size",
+          "info": "e.g., 'one size', 'S/M/L', etc."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Image",
+          "info": "Leave blank to use product featured image"
+        },
+        {
+          "type": "header",
+          "content": "Price Settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_price",
+          "label": "Show Product Price",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "custom_price",
+          "label": "Custom Price Text",
+          "info": "Override product price with custom text"
+        },
+        {
+          "type": "header",
+          "content": "Color Swatches"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_swatches",
+          "label": "Show Color Swatches",
+          "default": true,
+          "info": "Display color swatches if product has variants"
+        },
+        {
+          "type": "header",
+          "content": "Link Settings"
+        },
+        {
+          "type": "url",
+          "id": "custom_link",
+          "label": "Custom Link",
+          "info": "Leave blank to link to product page"
+        },
+        {
+          "type": "header",
+          "content": "Style Settings"
+        },
+        {
+          "type": "color",
+          "id": "card_background",
+          "label": "Card Background Color",
+          "default": "#ffffff",
+          "info": "Background color for this product card"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#000000",
+          "info": "Color for title and size text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Row",
+      "blocks": [
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

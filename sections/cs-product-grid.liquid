@@ -1,0 +1,227 @@
+{% comment %}
+  Product Grid Section - 2x2 Grid Layout
+  - Uses blocks for flexible product management
+  - Fully responsive (desktop, tablet, mobile)
+  - Each product is clickable/linkable
+  - Alternating text/image layout
+{% endcomment %}
+
+{{ 'cs-product-grid.css' | asset_url | stylesheet_tag }}
+
+<section class="cs-product-grid" style="{% if section.settings.section_background != blank %}background-color: {{ section.settings.section_background }};{% endif %}">
+  <div class="cs-product-grid__wrapper">
+    {% for block in section.blocks %}
+      {% if block.type == 'product' %}
+        {% assign product = block.settings.product %}
+        {% assign custom_link = block.settings.custom_link %}
+        
+        {% comment %} Determine the link - custom link or product link {% endcomment %}
+        {% if custom_link != blank %}
+          {% assign product_url = custom_link %}
+        {% elsif product != blank %}
+          {% assign product_url = product.url %}
+        {% else %}
+          {% assign product_url = '#' %}
+        {% endif %}
+
+        <div class="cs-product-grid__item" {{ block.shopify_attributes }} style="{% if block.settings.background_color != blank %}background-color: {{ block.settings.background_color }};{% endif %}">
+          <a href="{{ product_url }}" class="cs-product-grid__link">
+            <div class="cs-product-grid__content">
+              <div class="cs-product-grid__text">
+                {% if block.settings.title != blank %}
+                  <h3 class="cs-product-grid__title" style="{% if block.settings.text_color != blank %}color: {{ block.settings.text_color }};{% endif %}">{{ block.settings.title }}</h3>
+                {% elsif product != blank %}
+                  <h3 class="cs-product-grid__title" style="{% if block.settings.text_color != blank %}color: {{ block.settings.text_color }};{% endif %}">{{ product.title }}</h3>
+                {% endif %}
+
+                {% if block.settings.description != blank %}
+                  <p class="cs-product-grid__description" style="{% if block.settings.text_color != blank %}color: {{ block.settings.text_color }};{% endif %}">{{ block.settings.description }}</p>
+                {% endif %}
+
+                {% if block.settings.show_price and product != blank %}
+                  <div class="cs-product-grid__price">
+                    {{ product.price | money }}
+                  </div>
+                {% elsif block.settings.custom_price != blank %}
+                  <div class="cs-product-grid__price">
+                    {{ block.settings.custom_price }}
+                  </div>
+                {% endif %}
+              </div>
+
+              <div class="cs-product-grid__image-wrapper">
+                {% if block.settings.image != blank %}
+                  <img 
+                    class="cs-product-grid__image" 
+                    src="{{ block.settings.image | img_url: '800x' }}" 
+                    alt="{{ block.settings.title | escape }}"
+                    loading="lazy"
+                  >
+                {% elsif product != blank and product.featured_image != blank %}
+                  <img 
+                    class="cs-product-grid__image" 
+                    src="{{ product.featured_image | img_url: '800x' }}" 
+                    alt="{{ product.title | escape }}"
+                    loading="lazy"
+                  >
+                {% else %}
+                  <div style="width: 100%; height: 100%; background: #e0e0e0; display: flex; align-items: center; justify-content: center;">
+                    <p style="color: #666;">No image</p>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </a>
+        </div>
+      {% endif %}
+    {% endfor %}
+
+    {% comment %} Show placeholder if no blocks {% endcomment %}
+    {% comment %} {% if section.blocks.size == 0 %}
+      {% for i in (1..4) %}
+        <div class="cs-product-grid__item">
+          <div class="cs-product-grid__content">
+            <div class="cs-product-grid__text">
+              <h3 class="cs-product-grid__title">Product Title</h3>
+              <p class="cs-product-grid__description">Product description</p>
+              <div class="cs-product-grid__price">$0.00</div>
+            </div>
+            <div class="cs-product-grid__image-wrapper">
+              <div style="width: 100%; height: 100%; background: #e0e0e0; display: flex; align-items: center; justify-content: center;">
+                <p style="color: #666;">Add products in theme editor</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %} {% endcomment %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom Product Grid",
+  "tag": "section",
+  "class": "section-cs-product-grid",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "paragraph",
+      "content": "Add up to 4 product blocks below. The layout will automatically adapt to desktop, tablet, and mobile."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select Product",
+          "info": "Product information will be pulled automatically"
+        },
+        {
+          "type": "header",
+          "content": "Custom Content (Optional)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Custom Title",
+          "info": "Leave blank to use product title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Custom Description",
+          "default": "100% organic cotton",
+          "info": "Add product tagline or description"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Image",
+          "info": "Leave blank to use product featured image"
+        },
+        {
+          "type": "header",
+          "content": "Price Settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_price",
+          "label": "Show Product Price",
+          "default": true,
+          "info": "Display the actual product price"
+        },
+        {
+          "type": "text",
+          "id": "custom_price",
+          "label": "Custom Price Text",
+          "info": "Override product price with custom text (e.g., 'From $49.50')"
+        },
+        {
+          "type": "header",
+          "content": "Link Settings"
+        },
+        {
+          "type": "url",
+          "id": "custom_link",
+          "label": "Custom Link",
+          "info": "Leave blank to link to product page. Add custom URL to override."
+        },
+        {
+          "type": "header",
+          "content": "Style Settings"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "#f5f5f5",
+          "info": "Background color for this product card"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#000000",
+          "info": "Color for title and description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Product Grid",
+      "blocks": [
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

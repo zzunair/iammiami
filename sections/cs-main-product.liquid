@@ -1,0 +1,352 @@
+{{ 'cs-main-product.css' | asset_url | stylesheet_tag}}
+<div class="cs-main-product" style="{% if section.settings.background_color != blank %}background-color: {{ section.settings.background_color }};{% endif %}">
+  {% if section.settings.product != blank %}
+    {% assign product = section.settings.product %}
+    <div class="cs-main-product__wrapper" style="{% if section.settings.width_mode == 'narrow' %} max-width: 1520px;{% endif %}">
+    <a href="{{ product.url }}" class="cs-main-product__link">
+      <div class="cs-main-product__image-wrapper{% if section.settings.image_position == 'right' %} cs-main-product__image-wrapper--right{% endif %}">
+        {% comment %} Determine which image to display - custom image has priority {% endcomment %}
+        {% if section.settings.custom_image %}
+          {% assign display_image = section.settings.custom_image %}
+        {% elsif product.featured_image %}
+          {% assign display_image = product.featured_image %}
+        {% else %}
+          {% assign display_image = null %}
+        {% endif %}
+        
+        {% if display_image %}
+          <img 
+            id="cs-product-main-image-{{ section.id }}"
+            class="cs-main-product__image" 
+            src="{{ display_image | img_url: '800x' }}" 
+            alt="{{ product.title }}"
+            loading="lazy"
+            data-default-image="{{ display_image | img_url: '800x' }}"
+          >
+        {% endif %}
+      </div>
+
+      <div class="cs-main-product__details{% if section.settings.image_position == 'right' %} cs-main-product__details--right{% endif %}">
+        <h1 class="cs-main-product__title">{{ product.title }}</h1>
+
+        <div class="cs-main-product__price">
+          {{ product.price | money }}
+        </div>
+        {% if section.settings.tagline != blank %}
+          <p class="cs-main-product__tagline">{{ section.settings.tagline }}</p>
+        {% endif %}
+
+        {% if product.variants.size > 1 %}
+          <form id="cs-product-form-{{ section.id }}" action="/cart/add" method="post" enctype="multipart/form-data" onclick="event.stopPropagation();">
+            <input type="hidden" name="id" id="cs-variant-id-{{ section.id }}" value="{{ product.selected_or_first_available_variant.id }}">
+            
+            {% comment %} Identify which option is the color option {% endcomment %}
+            {% assign color_option_index = 0 %}
+            {% assign color_option_found = false %}
+            
+            {% for option in product.options_with_values %}
+              {% assign option_name_lower = option.name | downcase %}
+              {% if option_name_lower contains 'color' or option_name_lower contains 'colour' %}
+                {% assign color_option_index = forloop.index0 %}
+                {% assign color_option_found = true %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+            
+            {% comment %} If no color option found, check if option1 looks like colors (not sizes) {% endcomment %}
+            {% unless color_option_found %}
+              {% assign first_option = product.options_with_values.first %}
+              {% assign first_option_lower = first_option.name | downcase %}
+              {% assign size_keywords = 'size,small,medium,large,xs,s,m,l,xl,xxl,xxxl,one size' | split: ',' %}
+              {% assign is_size_option = false %}
+              {% for keyword in size_keywords %}
+                {% if first_option_lower contains keyword %}
+                  {% assign is_size_option = true %}
+                  {% break %}
+                {% endif %}
+              {% endfor %}
+              {% unless is_size_option %}
+                {% assign color_option_index = 0 %}
+                {% assign color_option_found = true %}
+              {% endunless %}
+            {% endunless %}
+            
+            {% comment %} Collect unique color values using product options {% endcomment %}
+            {% if color_option_found %}
+              {% assign color_option = product.options_with_values[color_option_index] %}
+              <div class="cs-main-product__swatches{% if section.settings.swatches_background_enabled %} cs-main-product__swatches--with-bg{% endif %}"{% if section.settings.swatches_background_enabled and section.settings.swatches_background_color != blank %} style="background-color: {{ section.settings.swatches_background_color }};"{% endif %}>
+                {% for color_value in color_option.values %}
+                  {% assign color_value_lower = color_value | downcase | strip %}
+                  {% assign swatch_color = '' %}
+                  
+                  {% comment %} Find first variant with this color to get variant ID and image {% endcomment %}
+                  {% assign selected_variant = null %}
+                  {% for variant in product.variants %}
+                    {% if color_option_index == 0 %}
+                      {% assign variant_color = variant.option1 | downcase | strip %}
+                    {% elsif color_option_index == 1 %}
+                      {% assign variant_color = variant.option2 | downcase | strip %}
+                    {% else %}
+                      {% assign variant_color = variant.option3 | downcase | strip %}
+                    {% endif %}
+                    
+                    {% if variant_color == color_value_lower %}
+                      {% assign selected_variant = variant %}
+                      {% break %}
+                    {% endif %}
+                  {% endfor %}
+                  
+                  {% comment %} Try to get color from variant metafield first {% endcomment %}
+                  {% if selected_variant != null and selected_variant.metafields.custom.swatch_color != blank %}
+                    {% assign swatch_color = selected_variant.metafields.custom.swatch_color %}
+                  {% endif %}
+                  
+                  {% comment %} If no metafield, use hardcoded brand colors {% endcomment %}
+                  {% if swatch_color == blank %}
+                    {% case color_value_lower %}
+                      {% when 'sun' %}
+                        {% assign swatch_color = '#F4D03F' %}
+                      {% when 'navy' %}
+                        {% assign swatch_color = '#1C3A57' %}
+                      {% when 'fog' %}
+                        {% assign swatch_color = '#C0C0C0' %}
+                      {% when 'white' %}
+                        {% assign swatch_color = '#FFFFFF' %}
+                      {% when 'black' %}
+                        {% assign swatch_color = '#000000' %}
+                      {% when 'yellow' %}
+                        {% assign swatch_color = '#F4D03F' %}
+                      {% when 'blue' %}
+                        {% assign swatch_color = '#1C3A57' %}
+                      {% when 'gray' or 'grey' %}
+                        {% assign swatch_color = '#C0C0C0' %}
+                      {% when 'red' %}
+                        {% assign swatch_color = '#E74C3C' %}
+                      {% when 'green' %}
+                        {% assign swatch_color = '#27AE60' %}
+                      {% when 'pink' %}
+                        {% assign swatch_color = '#F8B4D9' %}
+                      {% when 'orange' %}
+                        {% assign swatch_color = '#FF8C42' %}
+                      {% when 'brown' %}
+                        {% assign swatch_color = '#8B4513' %}
+                      {% when 'purple' %}
+                        {% assign swatch_color = '#9B59B6' %}
+                      {% when 'beige' %}
+                        {% assign swatch_color = '#F5F5DC' %}
+                      {% else %}
+                        {% assign swatch_color = '#CCCCCC' %}
+                    {% endcase %}
+                  {% endif %}
+
+                  {% if selected_variant != null %}
+                    <div class="cs-main-product__swatch">
+                      <input 
+                        type="radio" 
+                        name="variant-{{ section.id }}" 
+                        id="variant-{{ section.id }}-{{ selected_variant.id }}" 
+                        value="{{ selected_variant.id }}"
+                        class="cs-main-product__swatch-input"
+                        data-variant-image="{% if selected_variant.image %}{{ selected_variant.image | img_url: '800x' }}{% elsif section.settings.custom_image %}{{ section.settings.custom_image | img_url: '800x' }}{% else %}{{ product.featured_image | img_url: '800x' }}{% endif %}"
+                        data-image-id="cs-product-main-image-{{ section.id }}"
+                        data-variant-id-input="cs-variant-id-{{ section.id }}"
+                        {% if forloop.first %}checked{% endif %}
+                      >
+                      <label for="variant-{{ section.id }}-{{ selected_variant.id }}" class="cs-main-product__swatch-label">
+                        <span 
+                          class="cs-main-product__swatch-circle" 
+                          style="background-color: {{ swatch_color }};"
+                        ></span>
+                        <span class="cs-main-product__swatch-text">{{ color_value }}</span>
+                      </label>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            {% comment %} <button type="submit" class="cs-main-product__add-to-cart">
+              Add to Cart
+            </button> {% endcomment %}
+          </form>
+        {% else %}
+          <form action="/cart/add" method="post" enctype="multipart/form-data" onclick="event.stopPropagation();">
+            <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+            {% comment %} <button type="submit" class="cs-main-product__add-to-cart">
+              Add to Cart
+            </button> {% endcomment %}
+          </form>
+        {% endif %}
+      </div>
+    </a>
+    </div>
+  {% endif %}
+</div>
+
+<script>
+  // Handle variant swatch clicks and image switching
+  (function() {
+    function initSwatches() {
+      const swatchInputs = document.querySelectorAll('.cs-main-product__swatch-input');
+
+      swatchInputs.forEach(function(input) {
+        input.addEventListener('change', function() {
+          // Get the specific image and variant input for this section
+          const imageId = this.getAttribute('data-image-id');
+          const variantIdInputId = this.getAttribute('data-variant-id-input');
+          const variantImage = this.getAttribute('data-variant-image');
+          
+          if (imageId) {
+            const mainImage = document.getElementById(imageId);
+            if (variantImage && mainImage) {
+              mainImage.src = variantImage;
+            }
+          }
+
+          // Update hidden variant ID input
+          if (variantIdInputId) {
+            const variantIdInput = document.getElementById(variantIdInputId);
+            if (variantIdInput) {
+              variantIdInput.value = this.value;
+            }
+          }
+        });
+      });
+    }
+    
+    // Initialize on DOM ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSwatches);
+    } else {
+      initSwatches();
+    }
+    
+    // Also initialize for dynamically loaded content (Shopify theme editor)
+    if (typeof Shopify !== 'undefined' && Shopify.designMode) {
+      document.addEventListener('shopify:section:load', initSwatches);
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Custom Main Product",
+  "tag": "section",
+  "class": "section-cs-main-product",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Select Product"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "100% Cotton"
+    },
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image Position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left",
+      "info": "Choose whether the product image appears on the left or right side"
+    },
+    {
+      "type": "image_picker",
+      "id": "custom_image",
+      "label": "Custom Image",
+      "info": "Upload a custom image. If not set, the product's featured image will be used."
+    },
+    {
+      "type": "header",
+      "content": "Color Swatches"
+    },
+    {
+      "type": "paragraph",
+      "content": "Supported colors: Sun, Navy, Fog, White, Black, Yellow, Blue, Gray, Red, Green, Pink, Orange, Brown, Purple, Beige. To add custom colors, use variant metafields (custom.swatch_color)."
+    },
+    {
+      "type": "checkbox",
+      "id": "swatches_background_enabled",
+      "label": "Enable Background for Swatches",
+      "default": false,
+      "info": "Add a background color behind the color swatches"
+    },
+    {
+      "type": "color",
+      "id": "swatches_background_color",
+      "label": "Swatches Background Color",
+      "default": "#f5f5f5",
+      "info": "Background color for the swatches container"
+    },
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "select",
+      "id": "width_mode",
+      "label": "Section Width",
+      "options": [
+        {
+          "value": "full",
+          "label": "Full Width"
+        },
+        {
+          "value": "narrow",
+          "label": "Narrow (1520px)"
+        }
+      ],
+      "default": "full",
+      "info": "Choose full width or narrow width (1520px) for the section"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Main Product"
+    }
+  ]
+}
+{% endschema %}
+
