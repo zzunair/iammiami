@@ -5,13 +5,25 @@
     <div class="cs-main-product__wrapper" style="{% if section.settings.width_mode == 'narrow' %} max-width: 1520px;{% endif %}">
     <a href="{{ product.url }}" class="cs-main-product__link">
       <div class="cs-main-product__image-wrapper{% if section.settings.image_position == 'right' %} cs-main-product__image-wrapper--right{% endif %}">
-        <img 
-          id="cs-product-main-image-{{ section.id }}"
-          class="cs-main-product__image" 
-          src="{{ product.featured_image | img_url: '800x' }}" 
-          alt="{{ product.title }}"
-          loading="lazy"
-        >
+        {% comment %} Determine which image to display - custom image has priority {% endcomment %}
+        {% if section.settings.custom_image %}
+          {% assign display_image = section.settings.custom_image %}
+        {% elsif product.featured_image %}
+          {% assign display_image = product.featured_image %}
+        {% else %}
+          {% assign display_image = null %}
+        {% endif %}
+        
+        {% if display_image %}
+          <img 
+            id="cs-product-main-image-{{ section.id }}"
+            class="cs-main-product__image" 
+            src="{{ display_image | img_url: '800x' }}" 
+            alt="{{ product.title }}"
+            loading="lazy"
+            data-default-image="{{ display_image | img_url: '800x' }}"
+          >
+        {% endif %}
       </div>
 
       <div class="cs-main-product__details{% if section.settings.image_position == 'right' %} cs-main-product__details--right{% endif %}">
@@ -135,7 +147,7 @@
                         id="variant-{{ section.id }}-{{ selected_variant.id }}" 
                         value="{{ selected_variant.id }}"
                         class="cs-main-product__swatch-input"
-                        data-variant-image="{% if selected_variant.image %}{{ selected_variant.image | img_url: '800x' }}{% else %}{{ product.featured_image | img_url: '800x' }}{% endif %}"
+                        data-variant-image="{% if selected_variant.image %}{{ selected_variant.image | img_url: '800x' }}{% elsif section.settings.custom_image %}{{ section.settings.custom_image | img_url: '800x' }}{% else %}{{ product.featured_image | img_url: '800x' }}{% endif %}"
                         data-image-id="cs-product-main-image-{{ section.id }}"
                         data-variant-id-input="cs-variant-id-{{ section.id }}"
                         {% if forloop.first %}checked{% endif %}
@@ -253,6 +265,12 @@
       ],
       "default": "left",
       "info": "Choose whether the product image appears on the left or right side"
+    },
+    {
+      "type": "image_picker",
+      "id": "custom_image",
+      "label": "Custom Image",
+      "info": "Upload a custom image. If not set, the product's featured image will be used."
     },
     {
       "type": "header",
